@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Ball
+  - Bottom
+  - Cube
+  - Wall
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Ball
+  - Cube
+  - Wall
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1715918253
+    locked: 0
+  - name: Grid
+    uniqueID: 4275833945
+    locked: 0
+  - name: Block
+    uniqueID: 1982769839
+    locked: 0
+  - name: kuang
+    uniqueID: 1721139479
+    locked: 0
+  - name: Ball
+    uniqueID: 457289205
+    locked: 0
+  - name: UI
+    uniqueID: 3182830577
+    locked: 0
