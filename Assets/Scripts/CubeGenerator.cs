@@ -52,17 +52,30 @@ public class CubeGenerator : MonoBehaviour
         {
             Vector3 target = cube.transform.position + Vector3.down * cellSize;
             cube.transform.DOMove(target, 0.3f).SetEase(Ease.OutCubic);
+            cube.GetComponent<CubeController>()?.CheakPosition();
+        }
+
+    }
+
+    void ClearAllCubes()
+    {
+        var cubes = GameObject.FindGameObjectsWithTag("Cube");
+        foreach (var cube in cubes)
+        {
+            Destroy(cube);
         }
     }
 
     void OnEnable()
     {
         GameEvents.OnRoundFinished += OnRoundFinished;
+        GameEvents.GameOver += ClearAllCubes;
     }
 
     void OnDisable()
     {
         GameEvents.OnRoundFinished -= OnRoundFinished;
+        GameEvents.GameOver -= ClearAllCubes;
     }
 
     // Start is called before the first frame update

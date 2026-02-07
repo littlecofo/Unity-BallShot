@@ -16,4 +16,6 @@ public class GameEvents
     public static Action OnRoundFinished;
 
     public static Action<GameObject> OnFirstBallAnchored;
+
+    public static Action GameOver;
 }

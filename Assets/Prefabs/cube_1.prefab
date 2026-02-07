@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballTag: Ball
-  initialHP: 1
+  initialHP: 70
   hitEffectPrefab: {fileID: 4780983388984223103, guid: db8928d984de79042b174dd686e76a74, type: 3}
   hitEffectScale: 1.5
   hitEffectDuration: 0.5
@@ -163,6 +163,7 @@ MonoBehaviour:
   boxFallPrefab: {fileID: 2324869606110307696, guid: d50d726873289434ab9699c88e7c9363, type: 3}
   boxFallScale: 1
   boxFallDuration: 1
+  initHP: 0
 --- !u!1 &3533314314865521971
 GameObject:
   m_ObjectHideFlags: 0

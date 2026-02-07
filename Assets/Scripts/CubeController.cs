@@ -2,6 +2,15 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
+/*
+每一个方块的控制脚本，负责：
+- 维护血量显示
+- 处理被小球击中时的血量减少、击中特效、销毁逻辑
+- 在销毁时生成碎片和可选的方框掉落
+
+使用方法：将此脚本挂载在方块预制体上。必须包含一个 TextMeshProUGUI 组件用于显示血量（可以在子对象中）。方块预制体需要设置 Tag 为 "Cube"。
+*/
+
 public class CubeController : MonoBehaviour
 {
     [Header("配置")]
@@ -24,14 +33,16 @@ public class CubeController : MonoBehaviour
     public float debrisDelayMax = 0.12f; // 每个碎片缩小/销毁的随机延迟
 
     [Header("方框碎片（可选）")]
-    public GameObject boxFallPrefab; // 可选：在销毁时生成的方框预制体（会向下掉落并缩小）
+    public GameObject boxFallPrefab; // 在销毁时生成的方框预制体（会向下掉落并缩小）
     public float boxFallScale = 1f;
     public float boxFallDuration = 1f;
 
     TextMeshProUGUI hpText;
     public int initHP;
     int hp;
-
+    /*
+    为血量进行赋值，如果在子对象中找到了 TextMeshProUGUI 组件，则尝试从文本中解析初始血量，否则使用 initialHP 的值，并在控制台输出警告。
+    */
     void Awake()
     {
         hpText = GetComponentInChildren<TextMeshProUGUI>(true);
@@ -51,7 +62,9 @@ public class CubeController : MonoBehaviour
             );
         }
     }
-
+    /*
+    当方块被小球击中时，减少血量并更新显示。如果血量降到 0，则触发销毁逻辑，包括生成碎片和可选的方框掉落。
+    */
     void ApplyHit()
     {
         if (hp <= 0)
@@ -61,7 +74,7 @@ public class CubeController : MonoBehaviour
         if (hpText != null)
             hpText.text = hp.ToString();
 
-        // 击中特效（可选）
+        // 击中特效
         PlayHitEffect();
 
         if (hp == 0)
@@ -207,6 +220,14 @@ public class CubeController : MonoBehaviour
     {
         if (other.gameObject.CompareTag(ballTag))
             ApplyHit();
+    }
+
+    public void CheakPosition()
+    {
+        if (transform.position.y <= -3.4f)
+        {
+            GameEvents.GameOver?.Invoke();
+        }
     }
 
     // 外部调用：设置血量

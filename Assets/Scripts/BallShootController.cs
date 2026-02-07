@@ -4,22 +4,11 @@ using UnityEngine;
 
 public class BallShootController : MonoBehaviour
 {
-    enum BallState
-    {
-        Idle,
-        Aiming,
-        Fired,
-    }
-
     [Header("Move Settings")]
     public float speed = 5f;
     public int totalBalls = 60;
     public float spawnInterval = 0.08f;
 
-    private BallState state = BallState.Idle;
-
-    private Vector2 shootDir;
-    private Camera mainCam;
     private Vector2 shootPoint;
     public GameObject sliderUI; // 滑动条的父物体或自身
     public GameObject fireButton; // 发射按钮
@@ -33,10 +22,7 @@ public class BallShootController : MonoBehaviour
     Coroutine spawnRoutine;
 
     // Start is called before the first frame update
-    void Awake()
-    {
-        mainCam = Camera.main;
-    }
+    void Awake() { }
 
     void OnEnable()
     {
